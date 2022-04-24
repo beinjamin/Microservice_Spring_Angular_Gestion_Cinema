@@ -23,7 +23,6 @@ public class Film {
 	private Date dateSortie;
 	private double duree;
 	private String photo;
-	
     @OneToMany(mappedBy="film")
 	private Collection<Projection> projections;
 	private Categorie categorie;
