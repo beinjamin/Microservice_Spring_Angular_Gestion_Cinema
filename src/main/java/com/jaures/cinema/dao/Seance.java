@@ -25,7 +25,7 @@ public class Seance {
 	private Date heureDebut;
 	
 	
-	private 
+	private Date heurDebut;
 	
 
 }
