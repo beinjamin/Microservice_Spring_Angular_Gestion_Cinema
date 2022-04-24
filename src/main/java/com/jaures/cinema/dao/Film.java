@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -25,5 +26,6 @@ public class Film {
 	private String photo;
     @OneToMany(mappedBy="film")
 	private Collection<Projection> projections;
+    @ManyToOne
 	private Categorie categorie;
 }
