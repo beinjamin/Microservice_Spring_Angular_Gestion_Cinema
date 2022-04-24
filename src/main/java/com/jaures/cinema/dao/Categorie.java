@@ -3,6 +3,7 @@ package com.jaures.cinema.dao;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Categorie {
 	private Long id;
 	private String name;
+	@OneToMany(mappedBy="category")
 	private Collection<Film> films;
 
 }
