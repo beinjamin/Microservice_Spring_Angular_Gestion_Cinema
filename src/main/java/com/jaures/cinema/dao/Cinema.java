@@ -21,6 +21,7 @@ public class Cinema implements Serializable  {
 	private String name;
 	private double longitude,latitude,altitude;
 	private int nombreSalles;
+	@OneToMany(mappedBy="")
 	private Collection<Salle> salles;
 
 }
