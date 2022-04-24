@@ -20,7 +20,7 @@ public class Ville {
 	private Long id;
 	private String name;
 	private double logitude,latidude,altitude;
-	@OneToMany
+	@OneToMany(mappedBy="ville")
 	private Collection<Cinema> cinemas;
 
 }
