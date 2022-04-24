@@ -1,6 +1,7 @@
 package com.jaures.cinema.dao;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,5 +21,6 @@ public class Cinema implements Serializable  {
 	private String name;
 	private double longitude,latitude,altitude;
 	private int nombreSalles;
+	private Collection<Salle> salles;
 
 }
