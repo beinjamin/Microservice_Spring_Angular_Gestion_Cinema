@@ -24,5 +24,8 @@ public class Seance {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date heureDebut;
 	
+	
+	private 
+	
 
 }
