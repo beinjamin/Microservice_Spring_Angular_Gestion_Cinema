@@ -17,6 +17,7 @@ public class Categorie {
 	private Long id;
 	private String name;
 	@OneToMany(mappedBy="categorie")
+	
 	private Collection<Film> films;
 
 }
