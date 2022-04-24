@@ -26,7 +26,7 @@ public class Salle {
 	private Cinema cinema;
 	@OneToMany(mappedBy="salle")
 	private Collection<Place> Places;
-	
+	@OneToMany
 	private Collection<Projection> projections;
 	
 
