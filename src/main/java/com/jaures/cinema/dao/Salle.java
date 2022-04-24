@@ -27,5 +27,7 @@ public class Salle {
 	@OneToMany(mappedBy="salle")
 	private Collection<Place> Places;
 	
+	private Collection<Projection> projections;
+	
 
 }
