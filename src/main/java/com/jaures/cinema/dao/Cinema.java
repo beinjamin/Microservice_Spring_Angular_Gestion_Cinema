@@ -1,5 +1,7 @@
 package com.jaures.cinema.dao;
 
-public class Cinema {
+import java.io.Serializable;
+
+public class Cinema implements Serializable  {
 
 }
