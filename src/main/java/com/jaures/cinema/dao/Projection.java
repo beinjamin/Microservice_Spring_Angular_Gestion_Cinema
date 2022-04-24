@@ -28,6 +28,7 @@ public class Projection {
 	private Salle salle;
 	@ManyToOne
 	private Film film;
+	private Collection<Ticket> tickets;
 	
 
 }
