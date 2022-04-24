@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import lombok.Data;
 
 @Entity
-@Data
+@Data @AllArgsConstructor
 public class Cinema implements Serializable  {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id ;
