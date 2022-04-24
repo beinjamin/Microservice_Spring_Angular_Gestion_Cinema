@@ -33,5 +33,9 @@ public class Projection {
 	@OneToMany(mappedBy="projection")
 	private Collection<Ticket> tickets;
 	
+	@ManyToOne
+	
+	private Seance seance;
+	
 
 }
