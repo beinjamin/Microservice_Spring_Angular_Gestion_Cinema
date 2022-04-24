@@ -1,5 +1,6 @@
 package com.jaures.cinema.dao;
 
+import java.util.Collection;
 import java.util.Date;
 
 public class Film {
@@ -11,4 +12,5 @@ public class Film {
 	private double duree;
 	private String photo;
 
+	private Collection<Projection> projections;
 }
