@@ -1,4 +1,4 @@
-package com.jaures.cinema.dao;
+package com.jaures.cinema.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
