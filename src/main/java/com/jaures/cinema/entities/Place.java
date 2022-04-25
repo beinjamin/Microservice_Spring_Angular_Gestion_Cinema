@@ -1,11 +1,13 @@
-package com.jaures.cinema.dao;
+package com.jaures.cinema.entities;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -16,12 +18,16 @@ import lombok.NoArgsConstructor;
 @Data 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categorie {
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-	@OneToMany(mappedBy="categorie")
+public class Place {
 	
-	private Collection<Film> films;
+	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id; 
+	private int numero;
+	private double longitude,latidude,altitude;
+	@ManyToOne
+	private Salle salle;
+	@OneToMany(mappedBy="place")
+	private Collection<Ticket> tickets;
 
 }

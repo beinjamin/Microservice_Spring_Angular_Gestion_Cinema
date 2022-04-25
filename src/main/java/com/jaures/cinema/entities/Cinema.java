@@ -1,7 +1,7 @@
-package com.jaures.cinema.dao;
+package com.jaures.cinema.entities;
 
+import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,27 +15,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor 
-@ToString
-public class Projection {
+@Data @AllArgsConstructor @NoArgsConstructor @ToString
+public class Cinema implements Serializable  {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private Date dateProjection;
-	private double prix;
+	private Long id ;
+	private String name;
+	private double longitude,latitude,altitude;
+	private int nombreSalles;
+	@OneToMany(mappedBy="cinema")
+	private Collection<Salle> salles;
 	@ManyToOne
-	private Salle salle;
-	@ManyToOne
-	private Film film;
-	@OneToMany(mappedBy="projection")
-	private Collection<Ticket> tickets;
-	
-	@ManyToOne
-	
-	private Seance seance;
-	
+	private Ville ville;
 
 }
