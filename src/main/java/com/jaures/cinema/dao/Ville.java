@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
+@Data
 
 
 public class Ville {
