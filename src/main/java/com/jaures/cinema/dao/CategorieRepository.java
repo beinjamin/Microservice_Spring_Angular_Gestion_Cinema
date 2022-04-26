@@ -1,5 +1,11 @@
 package com.jaures.cinema.dao;
 
-public interface CategorieRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import com.jaures.cinema.entities.Categorie;
+
+@RepositoryRestResource
+public interface CategorieRepository extends JpaRepository<Categorie, Long>{
 
 }
