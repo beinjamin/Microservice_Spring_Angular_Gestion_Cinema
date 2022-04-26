@@ -1,6 +1,7 @@
 package com.jaures.cinema.entities;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 
 import javax.persistence.Entity;
