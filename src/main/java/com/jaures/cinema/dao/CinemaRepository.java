@@ -1,5 +1,9 @@
 package com.jaures.cinema.dao;
 
-public interface CinemaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jaures.cinema.entities.Cinema;
+
+public interface CinemaRepository extends JpaRepository<Cinema, Long>{
 
 }
