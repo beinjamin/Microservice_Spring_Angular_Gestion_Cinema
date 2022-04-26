@@ -1,5 +1,10 @@
 package com.jaures.cinema.dao;
 
-public interface SalleRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jaures.cinema.entities.Salle;
+
+
+public interface SalleRepository extends JpaRepository<Salle, Long>{
 
 }

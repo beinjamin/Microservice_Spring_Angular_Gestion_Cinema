@@ -1,5 +1,10 @@
 package com.jaures.cinema.dao;
 
-public interface TicketRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jaures.cinema.entities.Ticket;
+
+
+public interface TicketRepository extends JpaRepository<Ticket, Long>{
 
 }
