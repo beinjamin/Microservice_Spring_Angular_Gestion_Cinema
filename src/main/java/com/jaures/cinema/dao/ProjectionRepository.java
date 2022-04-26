@@ -1,5 +1,9 @@
 package com.jaures.cinema.dao;
 
-public interface ProjectionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jaures.cinema.entities.Projection;
+
+public interface ProjectionRepository extends JpaRepository<Projection, Long>{
 
 }
