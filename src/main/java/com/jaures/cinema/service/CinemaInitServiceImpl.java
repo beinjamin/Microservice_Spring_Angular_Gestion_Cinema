@@ -1,15 +1,31 @@
 package com.jaures.cinema.service;
 
+import java.util.stream.Stream;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.jaures.cinema.dao.VilleRepository;
+import com.jaures.cinema.entities.Ville;
 
 @Service
 
 public class CinemaInitServiceImpl implements ICinemaInitService {
 
+	
+	@Autowired
+	private VilleRepository villeRepository;
 	@Override
 	public void initVilles() {
-		// TODO Auto-generated method stub
-		
+		Stream.of("Douala","Yaoundé","Baffoussam","Kribie","Edea","Limbé").forEach(nameVille->{
+			Ville ville=new Ville();
+			ville.setName(nameVille);
+			villeRepository.save(ville);
+			
+			
+			//villeRepository.save(new Ville(null,v));
+		});
+    		
 	}
 
 	@Override
