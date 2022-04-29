@@ -5,7 +5,9 @@ import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jaures.cinema.dao.CinemaRepository;
 import com.jaures.cinema.dao.VilleRepository;
+import com.jaures.cinema.entities.Cinema;
 import com.jaures.cinema.entities.Ville;
 
 @Service
@@ -27,10 +29,21 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		});
     		
 	}
-
+	
+	
+    @Autowired
+    private CinemaRepository cinemaRepository;
 	@Override
 	public void initCinemas() {
-		// TODO Auto-generated method stub
+		villeRepository.findAll().forEach(v->{
+			Stream.of("CinéWourir","CinéBependa","CinéGrandMall","CinéJapoma")
+			.forEach(nameCinema->{
+				Cinema cinema=new Cinema();
+				cinema.setName(nameCinema);
+				cinema.setVille(v);
+			});
+		});
+		
 		
 	}
 
