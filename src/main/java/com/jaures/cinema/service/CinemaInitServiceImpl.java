@@ -17,6 +17,14 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	
 	@Autowired
 	private VilleRepository villeRepository;
+	@Autowired
+    private CinemaRepository cinemaRepository;
+	
+	
+	
+	
+	
+	
 	@Override
 	public void initVilles() {
 		Stream.of("Douala","Yaoundé","Baffoussam","Kribie","Edea","Limbé").forEach(nameVille->{
@@ -31,8 +39,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	}
 	
 	
-    @Autowired
-    private CinemaRepository cinemaRepository;
+   
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
@@ -40,6 +47,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			.forEach(nameCinema->{
 				Cinema cinema=new Cinema();
 				cinema.setName(nameCinema);
+				cinema.setNombreSalles(3+(int)(Math.random()*7));
 				cinema.setVille(v);
 			});
 		});
@@ -49,7 +57,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void intiSalles() {
-		// TODO Auto-generated method stub
+		cinemaRepository.findAll().forEach(c->{
+			Stream.of("Salle Douala Manga Belle", "Salle Melone","Salle A6","Salle Est")
+			.forEach(nameSalle->{
+				
+			})
+		});
 		
 	}
 
