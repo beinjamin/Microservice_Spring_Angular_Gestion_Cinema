@@ -5,7 +5,13 @@ import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jaures.cinema.dao.CategorieRepository;
 import com.jaures.cinema.dao.CinemaRepository;
+import com.jaures.cinema.dao.PlaceRepository;
+import com.jaures.cinema.dao.ProjectionRepository;
+import com.jaures.cinema.dao.SalleRepository;
+import com.jaures.cinema.dao.SeanceRepository;
+import com.jaures.cinema.dao.TicketRepository;
 import com.jaures.cinema.dao.VilleRepository;
 import com.jaures.cinema.entities.Cinema;
 import com.jaures.cinema.entities.Salle;
@@ -20,6 +26,23 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	private VilleRepository villeRepository;
 	@Autowired
     private CinemaRepository cinemaRepository;
+	@Autowired
+    private SalleRepository salleRepository;
+	@Autowired
+	private PlaceRepository placeRepository;
+	@Autowired
+    private SeanceRepository seanceRepository;
+	@Autowired
+	private FilmRepository filmRepository;
+	@Autowired
+    private TicketRepository ticketRepository;
+	@Autowired
+    private CategorieRepository categorieRepository;
+
+	@Autowired
+	private ProjectionRepository projectionRepository;
+	
+	
 	
 	
 	
@@ -40,6 +63,9 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	}
 	
 	
+	
+	
+	
    
 	@Override
 	public void initCinemas() {
@@ -55,6 +81,16 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 
 	@Override
 	public void intiSalles() {
@@ -63,7 +99,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			Salle salle=new Salle();
 			salle.setName("Salle" +(i+1));
 			salle.setCinema(cinema);
-			salle.setNombrePlace(20+(int)(Math.random()*10));
+			salle.setNombrePlace(20+(int)(Math.random()*35));
 			}
 			
 		
