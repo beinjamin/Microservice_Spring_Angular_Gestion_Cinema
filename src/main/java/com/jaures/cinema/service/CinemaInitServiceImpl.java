@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.jaures.cinema.dao.CinemaRepository;
 import com.jaures.cinema.dao.VilleRepository;
 import com.jaures.cinema.entities.Cinema;
+import com.jaures.cinema.entities.Salle;
 import com.jaures.cinema.entities.Ville;
 
 @Service
@@ -57,11 +58,15 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void intiSalles() {
-		cinemaRepository.findAll().forEach(c->{
-			Stream.of("Salle Douala Manga Belle", "Salle Melone","Salle A6","Salle Est")
-			.forEach(nameSalle->{
-				
-			})
+		cinemaRepository.findAll().forEach(cinema->{
+			for(int i=0;i<cinema.getNombreSalles();i++) {
+			Salle salle=new Salle();
+			salle.setName("Salle" +(i+1));
+			salle.setCinema(cinema);
+			salle.setNombrePlace(20+(int)(Math.random()*10));
+			}
+			
+		
 		});
 		
 	}
