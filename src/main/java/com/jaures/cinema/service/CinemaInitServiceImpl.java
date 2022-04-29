@@ -1,5 +1,9 @@
 package com.jaures.cinema.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
+
 public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
