@@ -17,6 +17,7 @@ import com.jaures.cinema.dao.SalleRepository;
 import com.jaures.cinema.dao.SeanceRepository;
 import com.jaures.cinema.dao.TicketRepository;
 import com.jaures.cinema.dao.VilleRepository;
+import com.jaures.cinema.entities.Categorie;
 import com.jaures.cinema.entities.Cinema;
 import com.jaures.cinema.entities.Place;
 import com.jaures.cinema.entities.Salle;
@@ -130,8 +131,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initCategories() {
-		// TODO Auto-generated method stub
-		
+		Stream.of("Histoire","Actions","Fiction","Drame","Aventure")
+      .forEach(cat->{
+    	  Categorie categorie=new Categorie();
+    	  categorie.setName(cat);  
+    	  categorieRepository.save(categorie) ; 
+    	  });		
 	}
 
 	@Override
