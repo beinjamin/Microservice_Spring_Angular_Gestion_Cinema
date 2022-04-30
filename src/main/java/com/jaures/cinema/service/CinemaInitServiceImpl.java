@@ -15,6 +15,7 @@ import com.jaures.cinema.dao.SeanceRepository;
 import com.jaures.cinema.dao.TicketRepository;
 import com.jaures.cinema.dao.VilleRepository;
 import com.jaures.cinema.entities.Cinema;
+import com.jaures.cinema.entities.Place;
 import com.jaures.cinema.entities.Salle;
 import com.jaures.cinema.entities.Ville;
 
@@ -120,8 +121,10 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	public void initPlaces() {
        salleRepository.findAll().forEach(salle->{
     	   for(int i=0;i<salle.getNombrePlace();i++) {
-    		   Place pl
-    	   }
+    		   Place place=new Place();
+    		   place.setNumero(i+1);  
+    		   place.setSalle(salle);  
+    		   placeRepository.save(place);    	   }
        });		
 	}
 
