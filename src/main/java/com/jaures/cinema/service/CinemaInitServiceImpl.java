@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.jaures.cinema.dao.CategorieRepository;
 import com.jaures.cinema.dao.CinemaRepository;
+import com.jaures.cinema.dao.FilmRepository;
 import com.jaures.cinema.dao.PlaceRepository;
 import com.jaures.cinema.dao.ProjectionRepository;
 import com.jaures.cinema.dao.SalleRepository;
@@ -35,12 +36,14 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Autowired
 	private FilmRepository filmRepository;
 	@Autowired
-    private TicketRepository ticketRepository;
+	private ProjectionRepository projectionRepository;
 	@Autowired
     private CategorieRepository categorieRepository;
-
 	@Autowired
-	private ProjectionRepository projectionRepository;
+    private TicketRepository ticketRepository;
+	
+
+	
 	
 	
 	
@@ -100,8 +103,8 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			salle.setName("Salle" +(i+1));
 			salle.setCinema(cinema);
 			salle.setNombrePlace(20+(int)(Math.random()*35));
+			salleRepository.save(salle);
 			}
-			
 		
 		});
 		
@@ -115,8 +118,11 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initPlaces() {
-		// TODO Auto-generated method stub
-		
+       salleRepository.findAll().forEach(salle->{
+    	   for(int i=0;i<salle.getNombrePlace();i++) {
+    		   Place pl
+    	   }
+       });		
 	}
 
 	@Override
