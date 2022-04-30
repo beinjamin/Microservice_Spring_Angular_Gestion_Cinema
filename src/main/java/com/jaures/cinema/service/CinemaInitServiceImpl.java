@@ -19,6 +19,7 @@ import com.jaures.cinema.dao.TicketRepository;
 import com.jaures.cinema.dao.VilleRepository;
 import com.jaures.cinema.entities.Categorie;
 import com.jaures.cinema.entities.Cinema;
+import com.jaures.cinema.entities.Film;
 import com.jaures.cinema.entities.Place;
 import com.jaures.cinema.entities.Salle;
 import com.jaures.cinema.entities.Seance;
@@ -165,7 +166,13 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 				"Spiderman",
 				"les Avengers",
 				"Social Network")
-        .forEach(null);
+        .forEach(titreFilm->{
+        	Film film=new Film();
+        	film.setTitre(titreFilm) ;
+        	film.setDuree(duree);        	
+        
+        
+        });
 	}
 
 	@Override
