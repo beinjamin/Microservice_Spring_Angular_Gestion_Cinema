@@ -1,5 +1,7 @@
 package com.jaures.cinema.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,7 +111,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	
 	@Override
 	public void initSeances() {
-
+        DateFormat dateFormat=new SimpleDateFormat("HH:mm");
 		Stream.of("10:00","12:00","15:00","17:00","20:00","22:00")
 		.forEach(s->{
 			Seance seance=new Seance();
