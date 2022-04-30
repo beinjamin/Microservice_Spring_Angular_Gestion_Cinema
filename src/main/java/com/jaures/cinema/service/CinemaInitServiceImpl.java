@@ -1,6 +1,7 @@
 package com.jaures.cinema.service;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.stream.Stream;
 
@@ -115,7 +116,13 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		Stream.of("10:00","12:00","15:00","17:00","20:00","22:00")
 		.forEach(s->{
 			Seance seance=new Seance();
-			seance.setHeureDebut(heureDebut);
+			try {
+				seance.setHeureDebut(dateFormat.parse(s));
+				seanceRepository.save(seance);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		});
 	}
