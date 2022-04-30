@@ -17,6 +17,7 @@ import com.jaures.cinema.dao.VilleRepository;
 import com.jaures.cinema.entities.Cinema;
 import com.jaures.cinema.entities.Place;
 import com.jaures.cinema.entities.Salle;
+import com.jaures.cinema.entities.Seance;
 import com.jaures.cinema.entities.Ville;
 
 @Service
@@ -74,6 +75,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 				cinema.setName(nameCinema);
 				cinema.setNombreSalles(3+(int)(Math.random()*7));
 				cinema.setVille(v);
+				cinemaRepository.save(cinema);
 			});
 		});
 		
@@ -107,8 +109,13 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	
 	@Override
 	public void initSeances() {
-		// TODO Auto-generated method stub
-		
+
+		Stream.of("10:00","12:00","15:00","17:00","20:00","22:00")
+		.forEach(s->{
+			Seance seance=new Seance();
+			seance.setHeureDebut(heureDebut);
+			
+		});
 	}
 
 
