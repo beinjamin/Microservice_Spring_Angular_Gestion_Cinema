@@ -60,7 +60,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	
 	@Override
 	public void initVilles() {
-		Stream.of("Douala","Yaoundé","Baffoussam","Kribie","Edea","Limbé").forEach(nameVille->{
+		Stream.of("Douala",
+				"Yaoundé",
+				"Baffoussam",
+				"Kribie",
+				"Edea",
+				"Limbé").forEach(nameVille->{
 			Ville ville=new Ville();
 			ville.setName(nameVille);
 			villeRepository.save(ville);
@@ -73,7 +78,10 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
-			Stream.of("CinéWourir","CinéBependa","CinéGrandMall","CinéJapoma")
+			Stream.of("CinéWourir",
+					"CinéBependa",
+					"CinéGrandMall",
+					"CinéJapoma")
 			.forEach(nameCinema->{
 				Cinema cinema=new Cinema();
 				cinema.setName(nameCinema);
@@ -114,7 +122,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Override
 	public void initSeances() {
         DateFormat dateFormat=new SimpleDateFormat("HH:mm");
-		Stream.of("10:00","12:00","15:00","17:00","20:00","22:00")
+		Stream.of("10:00",
+				"12:00",
+				"15:00",
+				"17:00",
+				"20:00",
+				"22:00")
 		.forEach(s->{
 			Seance seance=new Seance();
 			try {
@@ -131,7 +144,11 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initCategories() {
-		Stream.of("Histoire","Actions","Fiction","Drame","Aventure")
+		Stream.of("Histoire",
+				"Actions",
+				"Fiction",
+				"Drame",
+				"Aventure")
       .forEach(cat->{
     	  Categorie categorie=new Categorie();
     	  categorie.setName(cat);  
@@ -141,8 +158,14 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initFilms() {
-		// TODO Auto-generated method stub
-		
+		Stream.of("Le Callendrier",
+				"The After",
+				"Les 50 Nuance de Grey",
+				"Superman",
+				"Spiderman",
+				"les Avengers",
+				"Social Network")
+        .forEach(null);
 	}
 
 	@Override
