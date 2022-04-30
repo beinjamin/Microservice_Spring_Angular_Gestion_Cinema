@@ -64,13 +64,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			//villeRepository.save(new Ville(null,v));
 		});
     		
-	}
-	
-	
-	
-	
-	
-   
+	} 
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
@@ -85,17 +79,6 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 	@Override
 	public void intiSalles() {
 		cinemaRepository.findAll().forEach(cinema->{
@@ -112,12 +95,6 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	}
 
 	@Override
-	public void initSeances() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initPlaces() {
        salleRepository.findAll().forEach(salle->{
     	   for(int i=0;i<salle.getNombrePlace();i++) {
@@ -127,6 +104,13 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
     		   placeRepository.save(place);    	   }
        });		
 	}
+	
+	@Override
+	public void initSeances() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	@Override
 	public void initCategories() {
