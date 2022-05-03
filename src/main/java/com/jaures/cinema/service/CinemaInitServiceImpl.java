@@ -220,6 +220,8 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
     		  ticket.setPlace(place);
     		  ticket.setPrix(p.getPrix());
     		  ticket.setProjection(p);
+    		  ticket.setReserve(false);
+    		  ticketRepository.save(ticket);
     		  
     		  
     	  });
