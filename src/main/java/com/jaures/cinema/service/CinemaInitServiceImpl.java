@@ -184,7 +184,15 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initProjections() {
-		// TODO Auto-generated method stub
+		villeRepository.findAll().forEach(ville->{
+			ville.getCinemas().forEach(cinema->{
+				cinema.getSalles().forEach(salle->{
+					
+				});
+			});
+		});
+
+		
 		
 	}
 
