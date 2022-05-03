@@ -69,12 +69,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	
 	@Override
 	public void initVilles() {
-		Stream.of("Douala",
-				"Yaoundé",
-				"Baffoussam",
-				"Kribie",
-				"Edea",
-				"Limbé").forEach(nameVille->{
+		Stream.of("Douala","Yaoundé","Baffoussam","Kribie","Edea","Limbé").forEach(nameVille->{
 			Ville ville=new Ville();
 			ville.setName(nameVille);
 			villeRepository.save(ville);
@@ -84,13 +79,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		});
     		
 	} 
+	
+	
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
-			Stream.of("CinéWourir",
-					"CinéBependa",
-					"CinéGrandMall",
-					"CinéJapoma")
+			Stream.of("CinéWourir","CinéBependa","CinéGrandMall","CinéJapoma")
 			.forEach(nameCinema->{
 				Cinema cinema=new Cinema();
 				cinema.setName(nameCinema);
@@ -109,7 +103,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			Salle salle=new Salle();
 			salle.setName("Salle" +(i+1));
 			salle.setCinema(cinema);
-			salle.setNombrePlace(20+(int)(Math.random()*35));
+			salle.setNombrePlace(15+(int)(Math.random()*20));
 			salleRepository.save(salle);
 			}
 		
@@ -131,12 +125,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Override
 	public void initSeances() {
         DateFormat dateFormat=new SimpleDateFormat("HH:mm");
-		Stream.of("10:00",
-				"12:00",
-				"15:00",
-				"17:00",
-				"20:00",
-				"22:00")
+		Stream.of("10:00","12:00","15:00","17:00","20:00","22:00")
 		.forEach(s->{
 			Seance seance=new Seance();
 			try {
@@ -153,11 +142,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initCategories() {
-		Stream.of("Histoire",
-				"Actions",
-				"Fiction",
-				"Drame",
-				"Aventure")
+		Stream.of("Histoire","Actions","Fiction","Drame","Aventure")
       .forEach(cat->{
     	  Categorie categorie=new Categorie();
     	  categorie.setName(cat);  
@@ -169,13 +154,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	public void initFilms() {
 		double[] durees=new double[] {1,1.5,2,2.5,3};
 		List<Categorie> categories=categorieRepository.findAll();
-		Stream.of("Le Callendrier",
-				"The After",
-				"Les 50 Nuance de Grey",
-				"Superman",
-				"Spiderman",
-				"les Avengers",
-				"Social Network")
+		Stream.of("Le Callendrier","The After","Les 50 Nuance de Grey","Superman","Spiderman","les Avengers","Social Network")
         .forEach(titreFilm->{
         	Film film=new Film();
         	film.setTitre(titreFilm) ;
@@ -190,7 +169,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initProjections() {
-		double[] prices=new double[] {250,350,450,500};
+		double[] prices=new double[] {30,50,60,70,90,100};
 		villeRepository.findAll().forEach(ville->{
 			ville.getCinemas().forEach(cinema->{
 				cinema.getSalles().forEach(salle->{
