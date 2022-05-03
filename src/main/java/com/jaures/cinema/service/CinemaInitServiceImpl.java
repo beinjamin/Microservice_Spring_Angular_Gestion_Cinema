@@ -1,6 +1,14 @@
 package com.jaures.cinema.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +22,18 @@ import com.jaures.cinema.dao.SalleRepository;
 import com.jaures.cinema.dao.SeanceRepository;
 import com.jaures.cinema.dao.TicketRepository;
 import com.jaures.cinema.dao.VilleRepository;
+import com.jaures.cinema.entities.Categorie;
 import com.jaures.cinema.entities.Cinema;
+import com.jaures.cinema.entities.Film;
+import com.jaures.cinema.entities.Place;
+import com.jaures.cinema.entities.Projection;
 import com.jaures.cinema.entities.Salle;
+import com.jaures.cinema.entities.Seance;
+import com.jaures.cinema.entities.Ticket;
 import com.jaures.cinema.entities.Ville;
 
 @Service
+@Transactional
 
 public class CinemaInitServiceImpl implements ICinemaInitService {
 
@@ -63,13 +78,9 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			//villeRepository.save(new Ville(null,v));
 		});
     		
-	}
+	} 
 	
 	
-	
-	
-	
-   
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
@@ -79,22 +90,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 				cinema.setName(nameCinema);
 				cinema.setNombreSalles(3+(int)(Math.random()*7));
 				cinema.setVille(v);
+				cinemaRepository.save(cinema);
 			});
 		});
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 	@Override
 	public void intiSalles() {
 		cinemaRepository.findAll().forEach(cinema->{
@@ -102,7 +103,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			Salle salle=new Salle();
 			salle.setName("Salle" +(i+1));
 			salle.setCinema(cinema);
-			salle.setNombrePlace(20+(int)(Math.random()*35));
+			salle.setNombrePlace(15+(int)(Math.random()*20));
 			salleRepository.save(salle);
 			}
 		
@@ -111,41 +112,103 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	}
 
 	@Override
-	public void initSeances() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void initPlaces() {
        salleRepository.findAll().forEach(salle->{
     	   for(int i=0;i<salle.getNombrePlace();i++) {
-    		   Place pl
-    	   }
+    		   Place place=new Place();
+    		   place.setNumero(i+1);  
+    		   place.setSalle(salle);  
+    		   placeRepository.save(place);    	   }
        });		
 	}
+	
+	@Override
+	public void initSeances() {
+        DateFormat dateFormat=new SimpleDateFormat("HH:mm");
+		Stream.of("10:00","12:00","15:00","17:00","20:00","22:00")
+		.forEach(s->{
+			Seance seance=new Seance();
+			try {
+				seance.setHeureDebut(dateFormat.parse(s));
+				seanceRepository.save(seance);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		});
+	}
+
 
 	@Override
 	public void initCategories() {
-		// TODO Auto-generated method stub
-		
+		Stream.of("Histoire","Actions","Fiction","Drame","Aventure")
+      .forEach(cat->{
+    	  Categorie categorie=new Categorie();
+    	  categorie.setName(cat);  
+    	  categorieRepository.save(categorie) ; 
+    	  });		
 	}
 
 	@Override
 	public void initFilms() {
-		// TODO Auto-generated method stub
-		
+		double[] durees=new double[] {1,1.5,2,2.5,3};
+		List<Categorie> categories=categorieRepository.findAll();
+		Stream.of("Le Callendrier","The After","Les 50 Nuance de Grey","Superman","Spiderman","les Avengers","Social Network")
+        .forEach(titreFilm->{
+        	Film film=new Film();
+        	film.setTitre(titreFilm) ;
+        	film.setDuree(durees[new Random().nextInt(durees.length)]);
+        	film.setPhoto(titreFilm.replaceAll(" ",""));
+        	film.setCategorie(categories.get(new Random().nextInt(categories.size())));
+        	filmRepository.save(film);
+        
+        
+        });
 	}
 
 	@Override
 	public void initProjections() {
-		// TODO Auto-generated method stub
+		double[] prices=new double[] {30,50,60,70,90,100};
+		villeRepository.findAll().forEach(ville->{
+			ville.getCinemas().forEach(cinema->{
+				cinema.getSalles().forEach(salle->{
+					filmRepository.findAll().forEach(film->{
+						seanceRepository.findAll().forEach(seance->{
+							Projection projection=new Projection();
+							projection.setDateProjection(new Date());
+							projection.setFilm(film);
+							projection.setPrix(prices[new Random().nextInt(prices.length)]);
+							projection.setSalle(salle);
+							projection.setSeance(seance);
+							projectionRepository.save(projection);
+							
+							
+						});
+					});
+				});
+			});
+		});
+
+		
 		
 	}
 
 	@Override
 	public void initTickets() {
-		// TODO Auto-generated method stub
+      projectionRepository.findAll().forEach(p->{
+    	  p.getSalle().getPlaces().forEach(place->{
+    		  Ticket ticket=new Ticket();
+    		  ticket.setPlace(place);
+    		  ticket.setPrix(p.getPrix());
+    		  ticket.setProjection(p);
+    		  ticket.setReserve(false);
+    		  ticketRepository.save(ticket);
+    		  
+    		  
+    	  });
+      });
+		
 		
 	}
 
