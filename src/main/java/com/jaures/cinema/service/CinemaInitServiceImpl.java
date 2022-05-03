@@ -3,6 +3,7 @@ package com.jaures.cinema.service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -161,6 +162,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Override
 	public void initFilms() {
 		double[] durees=new double[] {1,1.5,2,2.5,3};
+		List<Categorie> categories=categorieRepository.findAll();
 		Stream.of("Le Callendrier",
 				"The After",
 				"Les 50 Nuance de Grey",
@@ -171,7 +173,9 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
         .forEach(titreFilm->{
         	Film film=new Film();
         	film.setTitre(titreFilm) ;
-        	film.setDuree(durees[new Random().nextInt(durees.length)]);        	
+        	film.setDuree(durees[new Random().nextInt(durees.length)]);
+        	film.setPhoto(titreFilm.replaceAll(" ",""));
+        	film.setCategorie(categorie)
         
         
         });
