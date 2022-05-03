@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,7 @@ import com.jaures.cinema.entities.Ticket;
 import com.jaures.cinema.entities.Ville;
 
 @Service
+@Transactional
 
 public class CinemaInitServiceImpl implements ICinemaInitService {
 
