@@ -3,6 +3,7 @@ package com.jaures.cinema.service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -23,6 +24,7 @@ import com.jaures.cinema.entities.Categorie;
 import com.jaures.cinema.entities.Cinema;
 import com.jaures.cinema.entities.Film;
 import com.jaures.cinema.entities.Place;
+import com.jaures.cinema.entities.Projection;
 import com.jaures.cinema.entities.Salle;
 import com.jaures.cinema.entities.Seance;
 import com.jaures.cinema.entities.Ville;
@@ -184,10 +186,23 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initProjections() {
+		double[] prices=new double[] {250,350,450,500};
 		villeRepository.findAll().forEach(ville->{
 			ville.getCinemas().forEach(cinema->{
 				cinema.getSalles().forEach(salle->{
-					
+					filmRepository.findAll().forEach(film->{
+						seanceRepository.findAll().forEach(seance->{
+							Projection projection=new Projection();
+							projection.setDateProjection(new Date());
+							projection.setFilm(film);
+							projection.setPrix(prices[new Random().nextInt(prices.length)]);
+							projection.setSalle(salle);
+							projection.setSeance(seance);
+							projectionRepository.save(projection);
+							
+							
+						});
+					});
 				});
 			});
 		});
