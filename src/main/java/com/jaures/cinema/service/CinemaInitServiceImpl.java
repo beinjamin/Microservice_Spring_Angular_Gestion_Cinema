@@ -27,6 +27,7 @@ import com.jaures.cinema.entities.Place;
 import com.jaures.cinema.entities.Projection;
 import com.jaures.cinema.entities.Salle;
 import com.jaures.cinema.entities.Seance;
+import com.jaures.cinema.entities.Ticket;
 import com.jaures.cinema.entities.Ville;
 
 @Service
@@ -213,7 +214,17 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initTickets() {
-		// TODO Auto-generated method stub
+      projectionRepository.findAll().forEach(p->{
+    	  p.getSalle().getPlaces().forEach(place->{
+    		  Ticket ticket=new Ticket();
+    		  ticket.setPlace(place);
+    		  ticket.setPrix(p.getPrix());
+    		  ticket.setProjection(p);
+    		  
+    		  
+    	  });
+      });
+		
 		
 	}
 
