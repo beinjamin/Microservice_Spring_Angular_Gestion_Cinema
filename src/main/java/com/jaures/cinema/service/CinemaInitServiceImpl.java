@@ -3,6 +3,7 @@ package com.jaures.cinema.service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,6 +160,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initFilms() {
+		double[] durees=new double[] {1,1.5,2,2.5,3};
 		Stream.of("Le Callendrier",
 				"The After",
 				"Les 50 Nuance de Grey",
@@ -169,7 +171,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
         .forEach(titreFilm->{
         	Film film=new Film();
         	film.setTitre(titreFilm) ;
-        	film.setDuree(duree);        	
+        	film.setDuree(durees[new Random().nextInt(durees.length)]);        	
         
         
         });
