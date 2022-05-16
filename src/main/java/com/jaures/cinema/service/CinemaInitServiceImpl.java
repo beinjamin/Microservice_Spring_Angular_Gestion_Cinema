@@ -141,6 +141,16 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 
 	@Override
+	public void initCategories() {
+		Stream.of("Histoire","Actions","Fiction","Drame","Aventure")
+      .forEach(cat->{
+    	  Categorie categorie=new Categorie();
+    	  categorie.setName(cat);  
+    	  categorieRepository.save(categorie) ; 
+    	  });		
+	}
+
+	@Override
 	public void initFilms() {
 		double[] durees=new double[] {1,1.5,2,2.5,3};
 		List<Categorie> categories=categorieRepository.findAll();
@@ -183,18 +193,6 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		
 		
 	}
-	
-
-	@Override
-	public void initCategories() {
-		Stream.of("Histoire","Actions","Fiction","Drame","Aventure")
-      .forEach(cat->{
-    	  Categorie categorie=new Categorie();
-    	  categorie.setName(cat);  
-    	  categorieRepository.save(categorie) ; 
-    	  });		
-	}
-
 
 	@Override
 	public void initTickets() {
