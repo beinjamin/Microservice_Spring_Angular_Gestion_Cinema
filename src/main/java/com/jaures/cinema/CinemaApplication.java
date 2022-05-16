@@ -25,6 +25,7 @@ public class CinemaApplication implements CommandLineRunner{
     cinemaInitService.initCinemas();
     cinemaInitService.intiSalles();
     cinemaInitService.initPlaces();
+    cinemaInitService.initSeances();
     cinemaInitService.initCategories();
     cinemaInitService.initFilms();
     cinemaInitService.initProjections();
