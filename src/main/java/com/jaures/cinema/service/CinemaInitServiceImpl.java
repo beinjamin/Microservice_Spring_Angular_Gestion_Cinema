@@ -103,7 +103,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 			Salle salle=new Salle();
 			salle.setName("Salle" +(i+1));
 			salle.setCinema(cinema);
-			salle.setNombrePlace(15+(int)(Math.random()*20));
+			salle.setNombrePlace(5+(int)(Math.random()*10));
 			salleRepository.save(salle);
 			}
 		
