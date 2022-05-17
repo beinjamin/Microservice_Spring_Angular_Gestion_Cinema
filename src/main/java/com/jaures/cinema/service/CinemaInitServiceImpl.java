@@ -169,7 +169,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initProjections() {
-		double[] prices=new double[] {30,50,60,70,90,100};
+		double[] prices=new double[] {2500,5000,6000,7500,9500,10000};
 		villeRepository.findAll().forEach(ville->{
 			ville.getCinemas().forEach(cinema->{
 				cinema.getSalles().forEach(salle->{
