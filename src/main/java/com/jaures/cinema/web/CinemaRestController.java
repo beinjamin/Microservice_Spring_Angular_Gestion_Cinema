@@ -1,16 +1,21 @@
 package com.jaures.cinema.web;
 
-import org.springframework.http.MediaType;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jaures.cinema.dao.FilmRepository;
+import com.jaures.cinema.entities.Film;
 
 @RestController
 public class CinemaRestController {
-	@GetMapping(path="/imageFilm/{id}", produces=MediaType.IMAGE_JPEG_VALUE)
+	private FilmRepository filmRepository;
 	
-	public byte[] image(@PathVariable (name="id")Long id) {
-		Film
+	
+	@GetMapping("/listFilms")
+	public List<Film> films(){
+		return filmRepository.findAll();
 		
 	}
 	
